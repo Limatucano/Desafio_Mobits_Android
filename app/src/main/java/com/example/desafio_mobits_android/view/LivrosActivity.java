@@ -2,6 +2,8 @@ package com.example.desafio_mobits_android.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.desafio_mobits_android.data.FetchBooks;
 import com.example.desafio_mobits_android.databinding.ActivityLivrosBinding;
 
 public class LivrosActivity extends AppCompatActivity {
@@ -15,6 +17,8 @@ public class LivrosActivity extends AppCompatActivity {
         binding.buttonBack.setOnClickListener(view -> {
             onBackPressed();
         });
+
+        new FetchBooks(binding.teste).execute();
     }
 
 }
