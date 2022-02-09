@@ -18,7 +18,7 @@ public class LivrosActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-        new FetchBooks(binding.teste).execute();
+        new FetchBooks(binding.booksRecycler, this).execute();
     }
 
 }
