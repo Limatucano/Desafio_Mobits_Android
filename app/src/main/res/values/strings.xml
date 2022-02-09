@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Desafio_Mobits_Android</string>
     <string name="text_subtitle_main">Seja bem vindo ao mundo de Crônicas de Gelo e Fogo, selecione uma opção abaixo para continuar navegando.</string>
+    <string name="text_title_main">Crônicas de Gelo e Fogo</string>
+    <string name="text_content_desciption_main">Imagem de fundo relacionada a cronicas de gelo e fogo</string>
+    <string name="text_button_houses">Casas</string>
+    <string name="text_button_books">Livros</string>
 </resources>

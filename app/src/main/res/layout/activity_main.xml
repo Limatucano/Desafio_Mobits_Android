@@ -11,7 +11,7 @@
         android:id="@+id/titleMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Crônicas de Gelo e Fogo"
+        android:text="@string/text_title_main"
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/white"
         android:textSize="38sp"
@@ -41,22 +41,35 @@
         android:src="@drawable/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/text_content_desciption_main" />
 
-    <ImageButton
+    <TextView
         android:id="@+id/buttonBooks"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_margin="10dp"
+        android:text="@string/text_button_books"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:fontFamily="@font/trajan_pro_bold"
+        android:textSize="22sp"
+        android:background="@drawable/button_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
+    <TextView
         android:id="@+id/buttonHouses"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_margin="10dp"
+        android:text="@string/text_button_houses"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:fontFamily="@font/trajan_pro_bold"
+        android:textSize="22sp"
+        android:background="@drawable/button_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
