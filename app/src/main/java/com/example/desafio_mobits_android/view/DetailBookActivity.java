@@ -18,9 +18,18 @@ public class DetailBookActivity extends AppCompatActivity {
         binding = ActivityDetailBookBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.buttonBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
         try{
             JSONObject book = new JSONObject(getIntent().getStringExtra("book"));
-            Log.d("TESTE", "teste");
+            String numbersPage = "Páginas: " + book.getInt("numberOfPages");
+            String isbn = "Isbn: " + book.getString("isbn");
+            String released = "Lançamento: " + book.getString("released");
+            binding.titleBook.setText(book.getString("name"));
+            binding.isbnBook.setText(isbn);
+            binding.pagesBook.setText(numbersPage);
+            binding.releasedBook.setText(released);
         }catch(JSONException e){
             e.printStackTrace();
         }
