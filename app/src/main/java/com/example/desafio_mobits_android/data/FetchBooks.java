@@ -2,18 +2,11 @@ package com.example.desafio_mobits_android.data;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.TextView;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.desafio_mobits_android.view.adapter.BookListAdapter;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.lang.ref.WeakReference;
 
 public class FetchBooks extends AsyncTask<String, Void, String> {

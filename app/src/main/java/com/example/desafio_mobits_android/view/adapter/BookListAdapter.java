@@ -1,6 +1,7 @@
 package com.example.desafio_mobits_android.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +12,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desafio_mobits_android.R;
+import com.example.desafio_mobits_android.view.DetailBookActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHolder> {
 
     private final JSONArray books;
     private LayoutInflater mInflater;
+    private Context context;
 
     public BookListAdapter(Context context, JSONArray books ){
+        this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.books = books;
     }
@@ -63,7 +69,15 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            Log.d("TESTE", "opa clicado");
+            int position = getLayoutPosition();
+            try {
+                JSONObject bookItem = new JSONObject(String.valueOf(books.getJSONObject(position)));
+                Intent intent = new Intent(context, DetailBookActivity.class);
+                intent.putExtra("book", bookItem.toString());
+                context.startActivity(intent);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -3,7 +3,7 @@
     package="com.example.desafio_mobits_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desafio_Mobits_Android">
+        <activity
+            android:name=".view.DetailBookActivity"
+            android:exported="false" />
         <activity
             android:name=".view.CasasActivity"
             android:exported="false" />
