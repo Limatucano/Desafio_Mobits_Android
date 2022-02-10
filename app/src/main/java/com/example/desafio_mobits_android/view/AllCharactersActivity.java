@@ -1,42 +1,55 @@
 package com.example.desafio_mobits_android.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.desafio_mobits_android.databinding.ActivityAllCharactersBinding;
-import com.google.gson.JsonObject;
+import com.example.desafio_mobits_android.view.section.CharacterSection;
+import com.example.desafio_mobits_android.view.section.ClickListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.LinkedHashMap;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
-public class AllCharactersActivity extends AppCompatActivity {
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
+
+public class AllCharactersActivity extends AppCompatActivity implements ClickListener {
     private ActivityAllCharactersBinding binding;
+    private SectionedRecyclerViewAdapter sectionedAdapter;
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAllCharactersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        String characters = getJSONData(this,"personagens_key_value.json");
 
+        binding.buttonBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
+
+        String characters = getJSONData(this,"personagens_key_value.json");
         try {
             JSONArray charactersUrl = new JSONArray(getIntent().getStringExtra("characters"));
             JSONObject charactersJson = new JSONObject(characters);
-            LinkedHashMap<String, LinkedList<String>> charactersList = new LinkedHashMap<String, LinkedList<String>>();
+            HashMap<String, List<String>> charactersList = new HashMap<String, List<String>>();
             for(int i=0;i < charactersUrl.length(); i++){
                 String character = charactersJson.getString(charactersUrl.getString(i));
                 if(charactersList.containsKey(String.valueOf(character.charAt(0)))){
@@ -47,6 +60,16 @@ public class AllCharactersActivity extends AppCompatActivity {
                     charactersList.put(String.valueOf(character.charAt(0)),firstCharacter);
                 }
             }
+            sectionedAdapter = new SectionedRecyclerViewAdapter();
+
+            for (final Map.Entry<String, List<String>> entry : charactersList.entrySet()){
+                if(entry.getValue().size() > 0){
+                    Collections.sort(entry.getValue());
+                    sectionedAdapter.addSection(new CharacterSection(entry.getKey(), entry.getValue(),this));
+                }
+            }
+            binding.charactersRecycler.setLayoutManager(new LinearLayoutManager(this));
+            binding.charactersRecycler.setAdapter(sectionedAdapter);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -72,5 +95,10 @@ public class AllCharactersActivity extends AppCompatActivity {
         }
 
         return buf.toString();
+    }
+
+    @Override
+    public void onItemRootViewClicked(@NonNull CharacterSection section, int itemAdapterPosition) {
+        Log.d("TESTE", "teste");
     }
 }
