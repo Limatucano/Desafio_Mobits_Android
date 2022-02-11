@@ -13,6 +13,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DetailBookActivity extends AppCompatActivity {
     private ActivityDetailBookBinding binding;
     @Override
@@ -27,14 +31,19 @@ public class DetailBookActivity extends AppCompatActivity {
         JSONObject book = null;
         try{
             book = new JSONObject(getIntent().getStringExtra("book"));
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+            String releasedDate = format.format(parser.parse(book.getString("released")));
             String numbersPage = "Páginas: " + book.getInt("numberOfPages");
             String isbn = "Isbn: " + book.getString("isbn");
-            String released = "Lançamento: " + book.getString("released");
+            String released = "Lançamento: " + releasedDate;
             binding.titleBook.setText(book.getString("name"));
             binding.isbnBook.setText(isbn);
             binding.pagesBook.setText(numbersPage);
             binding.releasedBook.setText(released);
         }catch(JSONException e){
+            e.printStackTrace();
+        }catch(ParseException e){
             e.printStackTrace();
         }
 
