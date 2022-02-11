@@ -9,4 +9,5 @@
     <string name="button_see_all_characters">Todos os Personagens</string>
     <string name="title_personagens">Personagens</string>
     <string name="title_personagem">Personagem</string>
+    <string name="title_label">Títulos:</string>
 </resources>

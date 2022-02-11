@@ -13,22 +13,18 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 public class NetworkUtils {
-    private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    private static final String BASE_URL = "https://www.anapioficeandfire.com/api/";
+    public static final String BASE_URL = "https://www.anapioficeandfire.com/api/";
 
-    static String getAllBooks(){
+    static String request(Uri uri, String requestMethod){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String bookJSONString = null;
 
         try {
-            Uri builtURI = Uri.parse(BASE_URL).buildUpon()
-                    .appendPath("books")
-                    .build();
-            URL requestURL = new URL(builtURI.toString());
+            URL requestURL = new URL(uri.toString());
 
             urlConnection = (HttpsURLConnection) requestURL.openConnection();
-            urlConnection.setRequestMethod("GET");
+            urlConnection.setRequestMethod(requestMethod);
             urlConnection.connect();
 
             InputStream inputStream = urlConnection.getInputStream();

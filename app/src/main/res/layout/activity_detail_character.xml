@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
         <TextView
-            android:id="@+id/titleBook"
+            android:id="@+id/nameCharacter"
             style="@style/title_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,40 +73,47 @@
             tools:text="Nome do Personagem" />
 
         <TextView
-            android:id="@+id/isbnBook"
+            android:id="@+id/sexCharacter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleBook"
+            app:layout_constraintTop_toBottomOf="@+id/nameCharacter"
             tools:text="Sexo"
             style="@style/description_style" />
 
         <TextView
-            android:id="@+id/pagesBook"
+            android:id="@+id/bornCharacter"
             style="@style/description_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/isbnBook"
+            app:layout_constraintTop_toBottomOf="@+id/sexCharacter"
             tools:text="Nascimento" />
 
-        <ScrollView
+        <TextView
+            android:id="@+id/titleLabel"
+            style="@style/description_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bornCharacter"
+            android:text="@string/title_label" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/titlesCharacter"
+            style="@style/description_style"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pagesBook">
-
-            <TextView
-                android:id="@+id/releasedBook"
-                style="@style/description_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Títulos (array)" />
-        </ScrollView>
+            app:layout_constraintTop_toBottomOf="@+id/titleLabel"
+            tools:listitem="@layout/character_title_list"
+            tools:text="Títulos (array)" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

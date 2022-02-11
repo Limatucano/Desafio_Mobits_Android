@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.desafio_mobits_android.data.FetchCharacter;
 import com.example.desafio_mobits_android.databinding.ActivityDetailCharacterBinding;
 
 public class DetailCharacterActivity extends AppCompatActivity {
@@ -17,8 +18,7 @@ public class DetailCharacterActivity extends AppCompatActivity {
 
         binding.buttonBack.setOnClickListener(view -> onBackPressed());
 
-
-        Log.d("TESTE",getIntent().getStringExtra("idCharacter"));
+        new FetchCharacter(getIntent().getStringExtra("idCharacter"),binding.nameCharacter,binding.sexCharacter,binding.bornCharacter,binding.titlesCharacter,this).execute();
 
     }
 }

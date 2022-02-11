@@ -1,6 +1,9 @@
 package com.example.desafio_mobits_android.data;
 
+import static com.example.desafio_mobits_android.data.NetworkUtils.BASE_URL;
+
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +39,10 @@ public class FetchBooks extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        return NetworkUtils.getAllBooks();
+        Uri builtURI = Uri.parse(BASE_URL).buildUpon()
+        .appendPath("books")
+        .build();
+        String requestMethod = "GET";
+        return NetworkUtils.request(builtURI, requestMethod);
     }
 }
