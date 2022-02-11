@@ -107,7 +107,9 @@ public class AllCharactersActivity extends AppCompatActivity implements ClickLis
             JSONObject characterByNameJSON = new JSONObject(characterByName);
             String characterClicked = charactersList.get(characterLetter).get(position);
             String idCharacter = characterByNameJSON.getString(characterClicked);
-            Log.d("TESTE", idCharacter);
+            Intent intent = new Intent(this, DetailCharacterActivity.class);
+            intent.putExtra("idCharacter", idCharacter);
+            startActivity(intent);
         }catch (JSONException e){
             e.printStackTrace();
         }
