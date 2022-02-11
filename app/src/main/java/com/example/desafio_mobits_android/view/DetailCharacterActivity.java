@@ -15,6 +15,9 @@ public class DetailCharacterActivity extends AppCompatActivity {
         binding = ActivityDetailCharacterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.buttonBack.setOnClickListener(view -> onBackPressed());
+
+
         Log.d("TESTE",getIntent().getStringExtra("idCharacter"));
 
     }
