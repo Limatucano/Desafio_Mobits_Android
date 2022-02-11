@@ -48,6 +48,27 @@ public class DetailBookActivity extends AppCompatActivity {
         }
 
         JSONObject finalBook = book;
+
+        binding.buttonSeePovCharacters.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailBookActivity.this, AllCharactersActivity.class);
+                JSONArray povCharacters = null;
+                if(finalBook != null){
+                    try {
+                        povCharacters = finalBook.getJSONArray("povCharacters");
+                    }catch(JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+                if(povCharacters != null){
+                    intent.putExtra("characters", povCharacters.toString());
+                }
+                startActivity(intent);
+            }
+        });
+
         binding.buttonSeeAllCharacters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
