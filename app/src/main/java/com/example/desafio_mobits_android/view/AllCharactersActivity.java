@@ -1,6 +1,7 @@
 package com.example.desafio_mobits_android.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,8 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 public class AllCharactersActivity extends AppCompatActivity implements ClickListener {
     private ActivityAllCharactersBinding binding;
     private SectionedRecyclerViewAdapter sectionedAdapter;
+    private JSONObject charactersJson;
+    private HashMap<String, List<String>> charactersList;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +51,8 @@ public class AllCharactersActivity extends AppCompatActivity implements ClickLis
         String characters = getJSONData(this,"personagens_key_value.json");
         try {
             JSONArray charactersUrl = new JSONArray(getIntent().getStringExtra("characters"));
-            JSONObject charactersJson = new JSONObject(characters);
-            HashMap<String, List<String>> charactersList = new HashMap<String, List<String>>();
+            charactersJson = new JSONObject(characters);
+            charactersList = new HashMap<String, List<String>>();
             for(int i=0;i < charactersUrl.length(); i++){
                 String character = charactersJson.getString(charactersUrl.getString(i));
                 if(charactersList.containsKey(String.valueOf(character.charAt(0)))){
@@ -98,7 +101,15 @@ public class AllCharactersActivity extends AppCompatActivity implements ClickLis
     }
 
     @Override
-    public void onItemRootViewClicked(@NonNull CharacterSection section, int itemAdapterPosition) {
-        Log.d("TESTE", "teste");
+    public void onItemRootViewClicked(@NonNull CharacterSection section, int itemAdapterPosition, int position, String characterLetter) {
+        try {
+            String characterByName = getJSONData(this,"personagens_by_name.json");
+            JSONObject characterByNameJSON = new JSONObject(characterByName);
+            String characterClicked = charactersList.get(characterLetter).get(position);
+            String idCharacter = characterByNameJSON.getString(characterClicked);
+            Log.d("TESTE", idCharacter);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
     }
 }

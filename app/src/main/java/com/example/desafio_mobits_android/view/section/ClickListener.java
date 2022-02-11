@@ -4,5 +4,5 @@ import androidx.annotation.NonNull;
 
 public interface ClickListener {
 
-    void onItemRootViewClicked(@NonNull final CharacterSection section, final int itemAdapterPosition);
+    void onItemRootViewClicked(@NonNull final CharacterSection section, final int itemAdapterPosition, final int position, final String CharacterFirstLetter);
 }

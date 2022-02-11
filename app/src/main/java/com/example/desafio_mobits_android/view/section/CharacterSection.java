@@ -42,7 +42,9 @@ public class CharacterSection extends Section {
         final ItemViewHolder itemHolder = (ItemViewHolder) holder;
         itemHolder.characterName.setText(itemList.get(position));
 
-        itemHolder.characterCard.setOnClickListener(view -> clickListener.onItemRootViewClicked(this, itemHolder.getAdapterPosition()));
+        itemHolder.characterCard.setOnClickListener(view -> {
+            clickListener.onItemRootViewClicked(this, itemHolder.getAdapterPosition(), position, String.valueOf(itemList.get(position).charAt(0)));
+        });
     }
     @Override
     public RecyclerView.ViewHolder getHeaderViewHolder(final View view) {
