@@ -12,4 +12,8 @@
     <string name="title_label">Títulos:</string>
     <string name="see_pov_characters_label">Personagens POV</string>
     <string name="title_casas">Casas</string>
+    <string name="title_livro">Livro</string>
+    <string name="title_casa">Casa</string>
+    <string name="button_senhor_da_casa">Senhor da Casa</string>
+    <string name="button_herdeiro_da_casa">Herdeiro da Casa</string>
 </resources>

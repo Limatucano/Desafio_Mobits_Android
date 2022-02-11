@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Desafio_Mobits_Android">
         <activity
+            android:name=".view.DetailHouseActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.DetailCharacterActivity"
             android:exported="false" />
         <activity

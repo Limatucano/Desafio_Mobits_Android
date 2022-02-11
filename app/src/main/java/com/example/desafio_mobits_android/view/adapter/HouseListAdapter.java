@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desafio_mobits_android.R;
 import com.example.desafio_mobits_android.view.DetailBookActivity;
+import com.example.desafio_mobits_android.view.DetailHouseActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,14 +71,14 @@ public class HouseListAdapter extends RecyclerView.Adapter<HouseListAdapter.View
         @Override
         public void onClick(View view) {
             int position = getLayoutPosition();
-//            try {
-//                JSONObject bookItem = new JSONObject(String.valueOf(houses.getJSONObject(position)));
-//                Intent intent = new Intent(context, DetailBookActivity.class);
-//                intent.putExtra("book", bookItem.toString());
-//                context.startActivity(intent);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                JSONObject houseItem = new JSONObject(String.valueOf(houses.getJSONObject(position)));
+                Intent intent = new Intent(context, DetailHouseActivity.class);
+                intent.putExtra("house", houseItem.toString());
+                context.startActivity(intent);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
