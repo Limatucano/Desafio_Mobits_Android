@@ -52,7 +52,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="20dp"
@@ -60,75 +60,101 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        <androidx.constraintlayout.widget.ConstraintLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent">
 
-        <TextView
-            android:id="@+id/houseName"
-            style="@style/title_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Nome da casa" />
+            <TextView
+                android:id="@+id/houseName"
+                style="@style/title_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Nome da casa" />
 
-        <TextView
-            android:id="@+id/housePhrase"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/houseName"
-            tools:text="Frase da casa (words)"
-            style="@style/description_style" />
+            <TextView
+                android:id="@+id/housePhrase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/houseName"
+                tools:text="Frase da casa (words)"
+                style="@style/description_style" />
 
-        <TextView
-            android:id="@+id/houseRegion"
-            style="@style/description_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/housePhrase"
-            tools:text="Região" />
+            <TextView
+                android:id="@+id/houseRegion"
+                style="@style/description_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/housePhrase"
+                tools:text="Região" />
 
-        <TextView
-            android:id="@+id/houseTitles"
-            style="@style/description_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/houseRegion"
-            tools:text="Lançamento: data" />
+            <TextView
+                android:id="@+id/houseTitles"
+                style="@style/description_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/houseRegion"
+                tools:text="Lançamento: data" />
 
-        <TextView
-            android:id="@+id/buttonLord"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:fontFamily="@font/trajan_pro_bold"
-            android:textSize="22sp"
-            android:text="@string/button_senhor_da_casa"
-            android:background="@drawable/button_intern_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/houseTitles" />
+            <TextView
+                android:id="@+id/titleLabel"
+                style="@style/description_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/houseTitles"
+                android:text="@string/title_label" />
 
-        <TextView
-            android:id="@+id/buttonHeir"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:background="@drawable/button_intern_background"
-            android:fontFamily="@font/trajan_pro_bold"
-            android:gravity="center"
-            android:text="@string/button_herdeiro_da_casa"
-            android:textSize="22sp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLord" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/titlesCharacter"
+                style="@style/description_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleLabel"
+                tools:listitem="@layout/character_title_list"
+                tools:text="Títulos (array)" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/buttonLord"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:textSize="22sp"
+                android:text="@string/button_senhor_da_casa"
+                android:background="@drawable/button_intern_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titlesCharacter" />
+
+            <TextView
+                android:id="@+id/buttonHeir"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@drawable/button_intern_background"
+                android:fontFamily="@font/trajan_pro_bold"
+                android:gravity="center"
+                android:text="@string/button_herdeiro_da_casa"
+                android:textSize="22sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonLord" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.desafio_mobits_android.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import java.util.regex.*;
 import com.example.desafio_mobits_android.databinding.ActivityDetailHouseBinding;
+import com.example.desafio_mobits_android.view.adapter.TitlesCharacterAdapter;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +31,10 @@ public class DetailHouseActivity extends AppCompatActivity {
             binding.houseName.setText(house.getString("name"));
             binding.housePhrase.setText(house.getString("words"));
             binding.houseRegion.setText(house.getString("region"));
-
+            JSONArray titles = new JSONArray(house.getString("titles"));
+            TitlesCharacterAdapter mAdapter = new TitlesCharacterAdapter(this, titles);
+            binding.titlesCharacter.setAdapter(mAdapter);
+            binding.titlesCharacter.setLayoutManager(new LinearLayoutManager(this));
 
         }catch(JSONException e){
             e.printStackTrace();
