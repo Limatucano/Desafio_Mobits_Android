@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "68288707059",
+    "project_id": "desafiomobits",
+    "storage_bucket": "desafiomobits.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68288707059:android:60dbf6c602076f97c53a86",
+        "android_client_info": {
+          "package_name": "com.example.desafio_mobits_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68288707059-n9mjpmtaqs3mhrb2odcrofsd83685vre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAylZUTyzfEso4ODFMdAMe7SlHRWfUXPwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68288707059-n9mjpmtaqs3mhrb2odcrofsd83685vre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
