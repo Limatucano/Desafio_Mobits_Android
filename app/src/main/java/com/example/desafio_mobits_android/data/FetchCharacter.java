@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,15 +32,17 @@ public class FetchCharacter extends AsyncTask<String, Void, String> {
     private TextView sexCharacter;
     private TextView bornCharacter;
     private RecyclerView titlesCharacter;
+    private TextView titlesLabel;
     private TitlesCharacterAdapter mAdapter;
 
-    public FetchCharacter(String idCharacter, TextView nameCharacter, TextView sexCharacter, TextView bornCharacter, RecyclerView titlesCharacter, Context context){
+    public FetchCharacter(String idCharacter, TextView nameCharacter, TextView sexCharacter, TextView bornCharacter, RecyclerView titlesCharacter, Context context, TextView titlesLabel){
         this.idCharacter = idCharacter;
         this.nameCharacter = nameCharacter;
         this.sexCharacter = sexCharacter;
         this.bornCharacter = bornCharacter;
         this.titlesCharacter = titlesCharacter;
         this.context = context;
+        this.titlesLabel = titlesLabel;
     }
     @Override
     protected void onPostExecute(String s) {
@@ -50,6 +53,10 @@ public class FetchCharacter extends AsyncTask<String, Void, String> {
             bornCharacter.setText("Nascimento: " + response.getString("born"));
 
             JSONArray titles = new JSONArray(response.getString("titles"));
+            if(titles.get(0).toString().equals("")){
+                titlesLabel.setVisibility(View.GONE);
+                titlesCharacter.setVisibility(View.GONE);
+            }
             mAdapter = new TitlesCharacterAdapter(context, titles);
             titlesCharacter.setAdapter(mAdapter);
             titlesCharacter.setLayoutManager(new LinearLayoutManager(context));

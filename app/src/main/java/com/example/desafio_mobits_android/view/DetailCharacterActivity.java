@@ -18,7 +18,13 @@ public class DetailCharacterActivity extends AppCompatActivity {
 
         binding.buttonBack.setOnClickListener(view -> onBackPressed());
 
-        new FetchCharacter(getIntent().getStringExtra("idCharacter"),binding.nameCharacter,binding.sexCharacter,binding.bornCharacter,binding.titlesCharacter,this).execute();
+        new FetchCharacter(getIntent().getStringExtra("idCharacter"),
+                binding.nameCharacter,
+                binding.sexCharacter,
+                binding.bornCharacter,
+                binding.titlesCharacter,
+                this,
+                binding.titleLabel).execute();
 
     }
 }
