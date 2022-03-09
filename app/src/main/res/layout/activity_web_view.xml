@@ -37,9 +37,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_livro"
+                android:text="@string/busca_google"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="22sp"
@@ -62,83 +63,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-        <TextView
-            android:id="@+id/titleBook"
-            style="@style/title_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Título do livro" />
-
-        <TextView
-            android:id="@+id/isbnBook"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleBook"
-            tools:text="isbn: número"
-            style="@style/description_style" />
-
-        <TextView
-            android:id="@+id/pagesBook"
-            style="@style/description_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/isbnBook"
-            tools:text="Páginas: número" />
-
-        <TextView
-            android:id="@+id/releasedBook"
-            style="@style/description_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pagesBook"
-            tools:text="Lançamento: data" />
-
-        <TextView
-            android:id="@+id/buttonSeePovCharacters"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:fontFamily="@font/trajan_pro_bold"
-            android:textSize="22sp"
-            android:text="@string/see_pov_characters_label"
-            android:background="@drawable/button_intern_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/releasedBook" />
-
-        <TextView
-            android:id="@+id/buttonSeeAllCharacters"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:background="@drawable/button_intern_background"
-            android:fontFamily="@font/trajan_pro_bold"
-            android:gravity="center"
-            android:text="@string/button_see_all_characters"
-            android:textSize="22sp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonSeePovCharacters" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import org.json.JSONObject;
 
 public class DetailHouseActivity extends AppCompatActivity {
     private ActivityDetailHouseBinding binding;
+    private String houseValue = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +27,16 @@ public class DetailHouseActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.buttonBack.setOnClickListener(view -> onBackPressed());
+
+        binding.buttonSearch.setOnClickListener(view -> {
+            Intent intent = new Intent(this,WebViewActivity.class);
+            intent.putExtra("name",houseValue);
+            startActivity(intent);
+        });
         JSONObject house = null;
         try{
             house = new JSONObject(getIntent().getStringExtra("house"));
+            houseValue = house.getString("name");
             binding.houseName.setText(house.getString("name"));
             binding.housePhrase.setText(house.getString("words"));
             binding.houseRegion.setText(house.getString("region"));

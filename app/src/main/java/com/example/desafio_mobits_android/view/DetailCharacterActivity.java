@@ -2,6 +2,7 @@ package com.example.desafio_mobits_android.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -17,14 +18,19 @@ public class DetailCharacterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.buttonBack.setOnClickListener(view -> onBackPressed());
-
+        binding.buttonSearch.setOnClickListener(view -> {
+            Intent intent = new Intent(this,WebViewActivity.class);
+            intent.putExtra("name",binding.nameCharacter.getText() == null ? "" : binding.nameCharacter.getText() );
+            startActivity(intent);
+        });
         new FetchCharacter(getIntent().getStringExtra("idCharacter"),
                 binding.nameCharacter,
                 binding.sexCharacter,
                 binding.bornCharacter,
                 binding.titlesCharacter,
                 this,
-                binding.titleLabel).execute();
+                binding.titleLabel,
+                binding.buttonSearch).execute();
 
     }
 }

@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,9 +34,18 @@ public class FetchCharacter extends AsyncTask<String, Void, String> {
     private TextView bornCharacter;
     private RecyclerView titlesCharacter;
     private TextView titlesLabel;
+    private ImageView buttonSearch;
     private TitlesCharacterAdapter mAdapter;
 
-    public FetchCharacter(String idCharacter, TextView nameCharacter, TextView sexCharacter, TextView bornCharacter, RecyclerView titlesCharacter, Context context, TextView titlesLabel){
+    public FetchCharacter(String idCharacter,
+                          TextView nameCharacter,
+                          TextView sexCharacter,
+                          TextView bornCharacter,
+                          RecyclerView titlesCharacter,
+                          Context context,
+                          TextView titlesLabel,
+                          ImageView buttonSearch
+    ){
         this.idCharacter = idCharacter;
         this.nameCharacter = nameCharacter;
         this.sexCharacter = sexCharacter;
@@ -43,6 +53,7 @@ public class FetchCharacter extends AsyncTask<String, Void, String> {
         this.titlesCharacter = titlesCharacter;
         this.context = context;
         this.titlesLabel = titlesLabel;
+        this.buttonSearch = buttonSearch;
     }
     @Override
     protected void onPostExecute(String s) {
@@ -51,6 +62,7 @@ public class FetchCharacter extends AsyncTask<String, Void, String> {
             nameCharacter.setText(response.getString("name"));
             sexCharacter.setText("Sexo: " + response.getString("gender"));
             bornCharacter.setText("Nascimento: " + response.getString("born"));
+            buttonSearch.setVisibility(View.VISIBLE);
 
             JSONArray titles = new JSONArray(response.getString("titles"));
             if(titles.get(0).toString().equals("")){

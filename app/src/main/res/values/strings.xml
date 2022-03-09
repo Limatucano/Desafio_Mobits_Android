@@ -16,4 +16,6 @@
     <string name="title_casa">Casa</string>
     <string name="button_senhor_da_casa">Senhor da Casa</string>
     <string name="button_herdeiro_da_casa">Herdeiro da Casa</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="busca_google">Busca google</string>
 </resources>

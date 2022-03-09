@@ -3,6 +3,7 @@ package com.example.desafio_mobits_android.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ import java.util.Date;
 
 public class DetailBookActivity extends AppCompatActivity {
     private ActivityDetailBookBinding binding;
+    private String title = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,13 @@ public class DetailBookActivity extends AppCompatActivity {
         binding.buttonBack.setOnClickListener(view -> {
             onBackPressed();
         });
+        binding.buttonSearch.setOnClickListener(view -> {
+            String url = "https://www.google.com/search?tbm=isch&q=" + title ;
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        });
+
         JSONObject book = null;
         try{
             book = new JSONObject(getIntent().getStringExtra("book"));
@@ -37,6 +46,7 @@ public class DetailBookActivity extends AppCompatActivity {
             String numbersPage = "Páginas: " + book.getInt("numberOfPages");
             String isbn = "Isbn: " + book.getString("isbn");
             String released = "Lançamento: " + releasedDate;
+            title = book.getString("name");
             binding.titleBook.setText(book.getString("name"));
             binding.isbnBook.setText(isbn);
             binding.pagesBook.setText(numbersPage);
